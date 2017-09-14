@@ -1,0 +1,9 @@
+
+hup mongod --replSet myapp --bind_ip 192.168.1.101  --port 3001 --dbpath cfg1/ >cfg1.log 2>&1 &
+
+
+nohup mongos --port 20001 --configdb shard1/192.168.199.137:3001,shard1/192.168.199.137:5001,shard1/192.168.199.137:7001 >mongos1.log 2>&1 &
+
+nohup mongos --port 20002 --configdb shard2/192.168.1.101:3002,shard2/192.168.1.101:4002,shard2/192.168.1.101:5002 >mongos2.log 2>&1 &
+
+nohup mongos --port 20003 --configdb shard3/192.168.1.101:3003,shard3/192.168.1.101:4003,shard3/192.168.1.101:5003 >mongos3.log 2>&1 &
